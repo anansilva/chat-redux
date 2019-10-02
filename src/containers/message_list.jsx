@@ -19,7 +19,7 @@ function mapStateToProps(state) {
 
 class MessageList extends Component {
   componentWillMount() {
-    this.props.fetchgMessages();
+    this.props.fetchMessages();
   }
 
   render() {
