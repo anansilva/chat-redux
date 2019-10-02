@@ -2,13 +2,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import Message from '../components/message';
+import { fetchMessages } from '../actions';
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators(
-//     { setCities },
-//     dispatch
-//   );
-// }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { fetchMessages },
+    dispatch
+  );
+}
 
 function mapStateToProps(state) {
   return {
@@ -17,9 +18,9 @@ function mapStateToProps(state) {
 }
 
 class MessageList extends Component {
-  // componentWillMount() {
-  //   this.props.setCities();
-  // }
+  componentWillMount() {
+    this.props.fetchgMessages();
+  }
 
   render() {
     return (
@@ -30,4 +31,4 @@ class MessageList extends Component {
   }
 }
 
-export default connect(mapStateToProps)(MessageList);
+export default connect(mapStateToProps, mapDispatchToProps)(MessageList);
