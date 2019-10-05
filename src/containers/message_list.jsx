@@ -22,6 +22,14 @@ class MessageList extends Component {
     this.props.fetchMessages();
   }
 
+  componentDidMount() {
+    this.refresher = setInterval(this.props.fetchMessages, 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.refresher);
+  }
+
   render() {
     return (
       <div className="messages">
