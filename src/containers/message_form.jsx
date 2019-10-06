@@ -24,6 +24,9 @@ class MessageForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    this.messageBox.focus();
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -37,12 +40,14 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Message:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
+      <form onSubmit={this.handleSubmit} className="channel-editor">
+        <input
+          ref={(input) => { this.messageBox = input; }}
+          type="text"
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+        <button type="submit">Send</button>
       </form>
     );
   }

@@ -2,6 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import Message from '../components/message';
+import MessageForm from '../containers/message_form';
 import { fetchMessages } from '../actions';
 
 function mapDispatchToProps(dispatch) {
@@ -13,7 +14,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages
+    messages: state.messages,
+    currentChannel: state.currentChannel
   };
 }
 
@@ -36,8 +38,12 @@ class MessageList extends Component {
 
   render() {
     return (
-      <div className="messages" ref={(list) => { this.list = list; }}>
-        {this.props.messages.map(message => <Message message={message} key={message.id} />)}
+      <div className="channel-container">
+        <span className="channel-title">#{this.props.currentChannel}</span>
+        <div className="channel-content" ref={(list) => { this.list = list; }}>
+          {this.props.messages.map(message => <Message message={message} key={message.id} />)}
+        </div>
+        <MessageForm />
       </div>
     );
   }

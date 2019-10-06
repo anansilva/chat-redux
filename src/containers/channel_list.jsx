@@ -34,7 +34,7 @@ class ChannelList extends Component {
               className={this.props.currentChannel === channel.name ? 'active' : ''}
               role="presentation"
             >
-              {channel.name}
+              #{channel.name}
             </li>)
           )}
         </ul>
