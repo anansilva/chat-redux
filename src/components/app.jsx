@@ -5,7 +5,7 @@ import MessageForm from '../containers/message_form';
 
 const App = () => {
   return (
-    <div>
+    <div className="messaging-wrapper">
       <ChannelList />
       <MessageList />
       <MessageForm />
